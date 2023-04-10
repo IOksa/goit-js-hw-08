@@ -25,8 +25,8 @@ function onFormSubmit(evt) {
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 
-    console.log("email: ", formData.email);
-    console.log("message: ", formData.message);
+    console.log("formData= ", formData);
+  
 }
 
 /*
@@ -45,11 +45,15 @@ function onInput(evt) {
  */
 function populateTextarea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
-
-    if (savedMessage) {
-      formData.email=JSON.parse(savedMessage).email;
-      formData.message=JSON.parse(savedMessage).message;
-      refs.input.value=formData.email;
-      refs.textarea.value = formData.message;
-    }
+   
+    if(savedMessage){
+        if (JSON.parse(savedMessage).email) {
+          formData.email=JSON.parse(savedMessage).email;
+          refs.input.value=formData.email;
+        }
+        if (JSON.parse(savedMessage).message) {
+          formData.message=JSON.parse(savedMessage).message;
+          refs.textarea.value = formData.message;
+        }
+      }
 }
