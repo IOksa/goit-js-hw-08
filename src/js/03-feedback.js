@@ -21,11 +21,14 @@ populateTextarea();
  */
 function onFormSubmit(evt) {
     evt.preventDefault();
-  
-    evt.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY);
+    if (refs.input.value==="" || refs.textarea.value===""){
+      alert('Всі поля повинні бути заповнені');
+    }else{
+      evt.currentTarget.reset();
+      localStorage.removeItem(STORAGE_KEY);
 
-    console.log("formData= ", formData);
+      console.log("formData= ", formData);
+    }
   
 }
 
